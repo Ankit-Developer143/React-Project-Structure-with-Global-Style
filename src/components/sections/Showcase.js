@@ -99,7 +99,7 @@ const Price = styled.div`
 
   img{
     width:1rem;
-    heigt:auto;
+    height:auto;
   }
 `
 

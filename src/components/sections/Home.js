@@ -7,6 +7,9 @@ import { keyframes} from "styled-components";
 import About from './About';
 import Roadmap from './Roadmap';
 import Showcase from './Showcase';
+import Team from './Team';
+import Footer from '../Footer';
+import Faq from './Faq';
 
 const Section = styled.section`
 min-height:${props => `calc(100vh - ${props.theme.navHeight})`};
@@ -88,6 +91,9 @@ const Home = () => {
     <About />
     <Roadmap />
     <Showcase />
+    <Team />
+    <Faq />
+    <Footer />
     </>
   )
 }

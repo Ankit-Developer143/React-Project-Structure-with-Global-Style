@@ -7,7 +7,7 @@ import Logo from './Logo';
 const Section = styled.section`
 width:100vw;
 background-color:${props => props.theme.body};
-`
+`;
 
 const NavBar = styled.nav`
 display:flex;
@@ -17,7 +17,7 @@ width:85%;
 height:${(props) => props.theme.navHeight};
 margin: 0 auto;
 
-`
+`;
 
 const Menu = styled.ul`
 display:flex;
@@ -25,12 +25,12 @@ justify-content:space-between;
 align-items:center;
 cursor:pointer;
 
-`
+`;
 
 const MenuItem = styled.li`
 margin:0 1rem;
 list-style:none;
-color:${props => props.theme.text}
+color:${props => props.theme.text};
 cursor:pointer;
 
 
@@ -48,7 +48,7 @@ cursor:pointer;
     width:100%;
 }
 
-`
+`;
 
 
 const Navigation = () => {
