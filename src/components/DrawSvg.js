@@ -14,21 +14,23 @@ const VectorContainer = styled.div`
   transform: translateX(-50%);
   width: 100%;
   height: 100%;
+  display: inline-block;
   overflow: hidden;
 
   svg {
     width: 100%;
     height: 100%;
   }
+
+  @media (max-width:48em){
+  left: 1rem;
+  }
 `;
 
 const Bounce = keyframes`
-from{
-    transform:translateX(-50%) scale(0.5);
-}
-to{
-    transform:translateX(-50%) scale(1);
-    }
+from{ transform:translateX(-50%) scale(0.5);}
+to{ transform:translateX(-50%) scale(1);}
+    
 `;
 
 const Ball = styled.div`
@@ -41,6 +43,9 @@ const Ball = styled.div`
   border-radius: 50%;
   background-color: ${(props) => props.theme.text};
   animation: ${Bounce} 0.5s linear infinite ease-in-out alterate;
+  @media (max-width:48em){
+  left: 1rem;
+  }
 `;
 
 const DrawSvg = () => {

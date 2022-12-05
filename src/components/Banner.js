@@ -1,42 +1,44 @@
-import React from 'react';
-import  styled  from 'styled-components';
-import img1 from '../assets/Nfts/bighead-1.svg';
-import img2 from '../assets/Nfts/bighead-2.svg';
-import img3 from '../assets/Nfts/bighead-3.svg';
-import img4 from '../assets/Nfts/bighead-4.svg';
-import img5 from '../assets/Nfts/bighead-5.svg';
-import img6 from '../assets/Nfts/bighead-6.svg';
-
-
+import React from "react";
+import styled from "styled-components";
+import img1 from "../assets/Nfts/bighead-1.svg";
+import img2 from "../assets/Nfts/bighead-2.svg";
+import img3 from "../assets/Nfts/bighead-3.svg";
+import img4 from "../assets/Nfts/bighead-4.svg";
+import img5 from "../assets/Nfts/bighead-5.svg";
+import img6 from "../assets/Nfts/bighead-6.svg";
 
 const Section = styled.section`
   height: 25rem;
   width: 100vw;
   background-color: ${(props) => `rgba(${props.theme.textRgba}, 0.9)`};
-  border-top:2px solid ${props => props.theme.text};
-  border-top:2px solid ${props => props.theme.text};
+  border-top: 2px solid ${(props) => props.theme.text};
+  border-top: 2px solid ${(props) => props.theme.text};
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow:hidden;
+  overflow: hidden;
+  @media (max-width:48em){
+    height: 15rem;
+   flex-direction:column;
+  }
 `;
 
 const ImgContainer = styled.div`
-width: 100%;
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%,-50%);
-display: flex;
-justify-content: space-between;
-align-items: center;
-opacity: 0.2;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.2;
 
-img{
-  width: 15rem;
-  height:auto;
-}
+  img {
+    width: 15rem;
+    height: auto;
+  }
 `;
 
 const Title = styled.h2`
@@ -48,74 +50,89 @@ const Title = styled.h2`
   width: 35%;
   position: relative;
   text-shadow: 1px 1px 2px ${(props) => props.theme.text};
+
+  @media (max-width: 64em) {
+    width: 40%;
+    font-size: ${(props) => props.theme.fontxxl};
+    text-align: center;
+  }
+
+  @media (max-width: 48em) {
+    width: 100%;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: ${(props) => props.theme.fontxl};
+  }
 `;
 
 const BtnContainer = styled.div`
-width: 35%;
-display: flex;
-justify-content: flex-end;
-font-size: ${props => props.theme.fontxl};
+  width: 35%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: ${(props) => props.theme.fontxl};
+
+  @media (max-width:48em){
+   width: 100%;
+   justify-content: center;
+  }
 `;
 
 const JoiNow = styled.button`
-display:inline-block;
-background-color:${props => props.theme.body};
-color:${props => props.theme.text};
-font-size:${props => props.theme.fontsm};
-border:none;
-outline:none;
-border:none;
-font-weight: 600;
-padding:1.5rem 2.3rem;
-border-radius:50px;
-transition:all 20.s ease;
-position:relative;
-&:hover{
-    transform:scale(0.9);
-}
+  display: inline-block;
+  background-color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
+  font-size: ${(props) => props.theme.fontsm};
+  border: none;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+  position: relative;
+  
+  &:hover {
+    transform: scale(0.9);
+  }
 
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border: 2px solid ${(props) => props.theme.body};
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+  }
 
-&::after{
-    content:' ';
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%) scale(0);
-    border:2px solid ${props => props.theme.body};
-    width:100%;
-    height:100%;
-    border-radius:50px;
-    transition:all 0.2s ease;
-}
-
-&:hover::after{
-    transform:translate(-50%,-50%) scale(1);
-    padding:0.3rem;
-}
+  &:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+    padding: 0.3rem;
+  }
 `;
-
-
 
 const Banner = () => {
   return (
     <Section>
       <ImgContainer>
-      <img src={img1} alt="The weirods" />
-      <img src={img2} alt="The weirods" />
-      <img src={img3} alt="The weirods" />
-      <img src={img4} alt="The weirods" />
-      <img src={img5} alt="The weirods" />
-      <img src={img6} alt="The weirods" />
+        <img src={img1} alt="The weirods" />
+        <img src={img2} alt="The weirods" />
+        <img src={img3} alt="The weirods" />
+        <img src={img4} alt="The weirods" />
+        <img src={img5} alt="The weirods" />
+        <img src={img6} alt="The weirods" />
       </ImgContainer>
-      <Title>Join the <br /> weirdos club</Title>
+      <Title>
+        Join the <br /> weirdos club
+      </Title>
       <BtnContainer>
-
-      <JoiNow>
-        Join Now
-      </JoiNow>
+        <JoiNow>Join Now</JoiNow>
       </BtnContainer>
     </Section>
-  )
-}
+  );
+};
 
 export default Banner;

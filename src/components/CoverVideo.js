@@ -10,12 +10,16 @@ video{
     width:100%;
     height:auto;
 }
+
+@media(max-width:64em){
+    width: 40vh;
+  }
 `
 const CoverVideo = () => {
   return (
   
       <VideoContainer>
-      <video src={GIF} type="video/mp4" autoPlay muted/>
+      <video src={GIF} type="video/mp4" autoPlay muted />
       </VideoContainer>
     
   )

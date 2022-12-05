@@ -1,4 +1,4 @@
-import React,{useRef, useLayoutEffect} from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 import DrawSvg from "../DrawSvg";
 import gsap from "gsap";
@@ -21,19 +21,30 @@ const Title = styled.h2`
   margin: 1rem auto;
   border-bottom: 2px solid ${(props) => props.theme.text};
   width: fit-content;
+
+  @media(max-width:48em){
+    font-size: ${(props) => props.theme.fontxl};
+  }
 `;
 
 const Container = styled.div`
+  width: 70%;
+  height: 200vh;
   text-transform: capitalize;
-  color: ${(props) => props.theme.body};
+  background-color: ${(props) => props.theme.body};
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   border-bottom: 2px solid ${(props) => props.theme.text};
-  width: 70%;
-  height: 200vh;
   position: relative;
+  @media (max-width: 64em) {
+    width: 80%;
+  }
+
+  @media (max-width: 48em) {
+    width: 90%;
+  }
 `;
 
 const SvgContainer = styled.div`
@@ -50,27 +61,37 @@ const Items = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  ${'' /* background-color: lightblue; */}
 
-  &>*:nth-of-type(2n + 1){
-    justify-content:start;
+  @media (max-width: 48em) {
+    width: 90%;
+  }
+  ${"" /* background-color: lightblue; */}
 
-    div{
-      border-radius:50px 0 50px 0;
-      text-align:right;
+  &>*:nth-of-type(2n + 1) {
+    justify-content: start;
+    @media (max-width: 48em) {
+      justify-content: center;
     }
-    p{
-      border-radius:40px 0px 40px 0px;
+
+    div {
+      border-radius: 50px 0 50px 0;
+      text-align: right;
+    }
+    p {
+      border-radius: 40px 0px 40px 0px;
     }
   }
-  &>*:nth-of-type(2n){
-    justify-content:end;
-    div{
-      border-radius:0px 50px 0px 50px;
-      text-align:left;
+  & > *:nth-of-type(2n) {
+    justify-content: end;
+    @media (max-width: 48em) {
+      justify-content: center;
     }
-    p{
-      border-radius:0px 40px 0px 40px;
+    div {
+      border-radius: 0px 50px 0px 50px;
+      text-align: left;
+    }
+    p {
+      border-radius: 0px 40px 0px 40px;
     }
   }
 `;
@@ -79,6 +100,10 @@ const Item = styled.li`
   width: 100%;
   height: 100%;
   display: flex;
+
+  @media (max-width: 48em) {
+    justify-content: flex-end !important;
+  }
 `;
 
 const ItemContainer = styled.div`
@@ -86,6 +111,9 @@ const ItemContainer = styled.div`
   height: fit-content;
   padding: 1rem;
   border: 3px solid ${(props) => props.theme.text};
+  @media(max-width:48em){
+  width: 70%;
+  }
 `;
 
 const Box = styled.p`
@@ -95,15 +123,25 @@ const Box = styled.p`
   padding: 1rem;
   position: relative;
   border: 1px solid ${(props) => props.theme.text};
+
+  @media(max-width:40em){
+    font-size: ${(props) => props.theme.fontlg};
+    font-weight: 600;
+  }
 `;
 
 const Text = styled.span`
-display:block;
-font-size:${(props) => props.theme.fontsm};
-text-transform:capitalize;
-color:${(props) => props.theme.text}
-font-weight:400;
-margin:0.5rem 0;
+  display: block;
+  font-size: ${(props) => props.theme.fontsm};
+  text-transform: capitalize;
+  color: ${(props) => props.theme.text};
+  font-weight: 400;
+  margin: 0.5rem 0;
+
+  @media(max-width:48em){
+    font-size: ${(props) => props.theme.fontxs};
+    font-weight: 600;
+  }
 `;
 
 const SubTitle = styled.span`
@@ -111,11 +149,16 @@ const SubTitle = styled.span`
   font-size: ${(props) => props.theme.fontxl};
   text-transform: capitalize;
   color: ${(props) => props.theme.text};
+
+  @media(max-width:48em){
+    font-size: ${(props) => props.theme.fontlg};
+    font-weight: 600;
+  }
 `;
 
 const RoadMapItem = ({ title, subtext, addToRefs }) => {
   return (
-    <Item ref={addToRefs}>
+    <Item ref={addToRefs} id="roadmap">
       <ItemContainer>
         <Box>
           <SubTitle>{title}</SubTitle>
@@ -127,44 +170,39 @@ const RoadMapItem = ({ title, subtext, addToRefs }) => {
 };
 
 const Roadmap = () => {
-
   const revealRefs = useRef([]);
   revealRefs.current = [];
   gsap.registerPlugin(ScrollTrigger);
 
-
   const addToRefs = (el) => {
-    if(el && !revealRefs.current.includes(el)){
+    if (el && !revealRefs.current.includes(el)) {
       revealRefs.current.push(el);
     }
-  }
+  };
 
   useLayoutEffect(() => {
     let t1 = gsap.timeline();
     revealRefs.current.forEach((el, index) => {
-
       t1.fromTo(
         el.childNodes[0],
         {
-          y:'0'
-        },{
-          y:'-30%',
-          scrollTrigger:{
-            id:`section-${index + 1}`,
-            trigger:el,
-            start:'top center +=200px',
-            end:'bottom center',
-            scrub:true,
-            markers:true,
-          }
+          y: "0",
+        },
+        {
+          y: "-30%",
+          scrollTrigger: {
+            id: `section-${index + 1}`,
+            trigger: el,
+            start: "top center +=200px",
+            end: "bottom center",
+            scrub: true,
+            markers: true,
+          },
         }
-      )
-
-    })
-    return () => {
-
-    }
-  },[])
+      );
+    });
+    return () => {};
+  }, []);
   return (
     <Section>
       <Title>Roadmap</Title>
@@ -173,12 +211,32 @@ const Roadmap = () => {
           <DrawSvg />
         </SvgContainer>
         <Items>
-        <Item>&nbsp;</Item>
-          <RoadMapItem addToRef={addToRefs} title="Grand Opening" subtext="Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. At Repellat Placeat, Adipisicing Elit. At Repellat Placeat." />
-          <RoadMapItem addToRef={addToRefs} title="Great Benefits" subtext="Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. At Repellat Placeat, Adipisicing Elit. At Repellat Placeat." />
-          <RoadMapItem addToRef={addToRefs} title="Early Access" subtext="Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. At Repellat Placeat, Adipisicing Elit. At Repellat Placeat." />
-          <RoadMapItem addToRef={addToRefs} title="New Merch" subtext="Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. At Repellat Placeat, Adipisicing Elit. At Repellat Placeat." />
-          <RoadMapItem addToRef={addToRefs} title="Holders Ranking" subtext="Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. At Repellat Placeat, Adipisicing Elit. At Repellat Placeat." />
+          <Item>&nbsp;</Item>
+          <RoadMapItem
+            addToRef={addToRefs}
+            title="Grand Opening"
+            subtext="Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. At Repellat Placeat, Adipisicing Elit. At Repellat Placeat."
+          />
+          <RoadMapItem
+            addToRef={addToRefs}
+            title="Great Benefits"
+            subtext="Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. At Repellat Placeat, Adipisicing Elit. At Repellat Placeat."
+          />
+          <RoadMapItem
+            addToRef={addToRefs}
+            title="Early Access"
+            subtext="Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. At Repellat Placeat, Adipisicing Elit. At Repellat Placeat."
+          />
+          <RoadMapItem
+            addToRef={addToRefs}
+            title="New Merch"
+            subtext="Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. At Repellat Placeat, Adipisicing Elit. At Repellat Placeat."
+          />
+          <RoadMapItem
+            addToRef={addToRefs}
+            title="Holders Ranking"
+            subtext="Lorem Ipsum Dolor Sit Amet Consectetur, Adipisicing Elit. At Repellat Placeat, Adipisicing Elit. At Repellat Placeat."
+          />
         </Items>
       </Container>
     </Section>

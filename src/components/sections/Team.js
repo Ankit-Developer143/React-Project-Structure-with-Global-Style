@@ -28,6 +28,10 @@ const Title = styled.h2`
   margin: 1rem auto;
   border-bottom: 2px solid ${(props) => props.theme.text};
   width: fit-content;
+  @media (max-width:40em){
+   font-size: ${props => props.theme.fontxl};
+  }
+
 `;
 
 const Container = styled.div`
@@ -38,6 +42,14 @@ justify-content: space-between;
 align-items: center;
 flex-wrap: wrap;
 
+@media (max-width:48em){
+   width: 80%;
+  }
+
+  @media (max-width:48em){
+   width: 90%;
+   justify-content: center;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -52,6 +64,11 @@ img{
   width:100%;
   height:100%;
 }
+
+@media (max-width:48em){
+   width: 90%;
+   justify-content: center;
+  }
 `;
 
 const Item = styled.div`
@@ -63,6 +80,7 @@ position: relative;
 
 backdrop-filter: blur(4px);
 z-index: 5;
+
 border:2px solid ${props => props.theme.text};
 border-radius: 20px;
 transition: all 0.3s ease;
@@ -72,6 +90,10 @@ transition: all 0.3s ease;
         transform: translateY(-2rem) scale(1.2);
     }
 }
+
+@media (max-width:48em){
+   width: 70vw;
+  }
 `;
 
 const Name = styled.h2`
@@ -109,7 +131,7 @@ const MemberComponent = ({img,name=" ", position=" "}) => {
 
 function Team() {
   return (
-    <Section>
+    <Section id='team'>
     <ConfettiComponent />
       <Title>Team</Title>
       <Container>

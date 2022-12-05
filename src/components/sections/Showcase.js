@@ -22,9 +22,19 @@ const Section = styled.section`
   justify-content:space-between;
   flex-direction:column;
   position: relative;
+  overflow: hidden;
+  margin-top: 2px;
+  @media (max-width:40em){
+    min-height: 30vh;
+  }
+  
 
   &>*:first-child{
     animation-duration:20s;
+
+  @media (max-width:30em){
+   animation-duration: 10s;
+  }
   }
 
   &>*:last-child{
@@ -38,20 +48,11 @@ const move = keyframes`
 `
 
 const Row = styled.div`
-  ${'' /* background-color:lightblue; */}
   white-space:nowrap;
   box-sizing:content-box;
   margin:2rem 0;
   display:flex;
   animation:${move}  linear infinite ${props =>props.direction};
-
-  ${'' /* div{
-    width:5rem;
-    height:5rem;
-    margin:2rem;
-    padding:2rem;
-    background-color:yellow;
-  } */}
 `;
 
 const ImageContainer = styled.div`
@@ -61,6 +62,14 @@ margin:0 1rem;
 background-color:${props => props.theme.body};
 border-radius:20px;
 cursor:pointer;
+
+@media (max-width:48em){
+   width: 12rem;
+  }
+
+  @media (max-width:30em){
+   width: 12rem;
+  }
 
 img{
   width:100%;
@@ -89,6 +98,9 @@ h1{
   font-size:${props => props.theme.fontmd};
   color:${props => props.theme.body};
   font-weight:600;
+  @media (max-width:30em){
+   font-size:${props => props.theme.fontsm};
+  }
 }
 `;
 
@@ -137,7 +149,7 @@ const Showcase = () => {
   const Row1Ref = useRef(null);
   const Row2Ref = useRef(null);
   return (
-    <Section>
+    <Section id='showcase'>
       <Row direction='none' ref={Row1Ref}>
       <CardItems img={img1} number={820} price={12.5} passRef={Row1Ref}/>
       <CardItems img={img2} number={220} price={11.5} passRef={Row1Ref}/>

@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Section = styled.section`
-  height: 25rem;
+  height: 8rem;
   width: 100vw;
   background-color: ${(props) => `rgba(${props.theme.textRgba}, 0.9)`};
   border-top:2px solid ${props => props.theme.text};
